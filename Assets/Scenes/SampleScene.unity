@@ -217,6 +217,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!20 &1541055127 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3391145328072543614, guid: 1baebe4aafc0fcb4d9c3b8ccf174f9b3, type: 3}
+  m_PrefabInstance: {fileID: 3391145327377801229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1794690119
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,3 +376,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1baebe4aafc0fcb4d9c3b8ccf174f9b3, type: 3}
+--- !u!1 &3391145327377801230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3391145328199675625, guid: 1baebe4aafc0fcb4d9c3b8ccf174f9b3, type: 3}
+  m_PrefabInstance: {fileID: 3391145327377801229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3391145327377801231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391145327377801230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b347c754174f11438022fe04abf608f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  gravity: -9.8
+  jumpHeight: 3
+--- !u!114 &3391145327377801232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391145327377801230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34118f73578b8b848a74b0140dc7d841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3391145327377801238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3391145327377801230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a203148dcd21aea48ac3f207dff859dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1541055127}
+  xSensistivity: 30
+  ySensitivity: 30
