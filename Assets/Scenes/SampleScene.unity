@@ -459,6 +459,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  groundDrag: 5
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
   orientation: {fileID: 1454151950}
 --- !u!1 &1454151949
 GameObject:
@@ -601,7 +606,7 @@ GameObject:
   - component: {fileID: 1794690122}
   - component: {fileID: 1794690121}
   - component: {fileID: 1794690120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +646,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 828c080cc90a6a049a70384acf6a74bd, type: 2}
+  - {fileID: 2100000, guid: d052f29d423ff2c439da21f150429940, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
