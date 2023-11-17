@@ -98,7 +98,7 @@ public class EnemyBehavior : MonoBehaviour
     public void AttackPlayer()
     {
         //Make sure enemy doesnt move
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
 
         transform.LookAt(player);
 
