@@ -18,7 +18,9 @@ public class EnemyBehavior : MonoBehaviour
 
     //Attacking
     [SerializeField] private float timeBetweenAttacks;
-    [SerializeField] private bool alradyAttacked;
+    [SerializeField] private bool alreadyAttacked;
+    public GameObject projectile;
+    [SerializeField] private bool canShoot;
 
     //States
     [SerializeField] private float sightRange, attackRange;
@@ -102,16 +104,30 @@ public class EnemyBehavior : MonoBehaviour
 
         transform.LookAt(player);
 
-        if (!alradyAttacked)
+        if (!alreadyAttacked)
         {
-            alradyAttacked = true;
+            if(canShoot)
+            {
+                //Shooting code
+                agent.SetDestination(transform.position);
+
+                Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+                rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            }
+            else
+            {
+                //Melee Code
+            }
+
+            alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
     private void ResetAttack()
     {
-        alradyAttacked = false;
+        alreadyAttacked = false;
     }
 
     public void TakeDamage(int damage)
