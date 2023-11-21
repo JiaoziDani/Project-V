@@ -6,8 +6,10 @@ public class EnemySpawner : MonoBehaviour
 {
     private BoxCollider coll;
 
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
     public GameObject[] enemies;
+    public int enemiesAlive = 0;
+    public int round = 0;
     public float rate;
     public float lifeSpan;
 
@@ -26,7 +28,11 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(enemiesAlive == 0)
+        {
+            round++;
+            SpawnEnemies();
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -35,18 +41,40 @@ public class EnemySpawner : MonoBehaviour
         if (collision.gameObject.tag == "Player" && !isTriggered)
         {
             isTriggered = true;
-            InvokeRepeating("SpawnEnemy", 0.2f, rate);
+            InvokeRepeating("SpawnEnemies", 0.2f, rate);
             coll.enabled = false;
         }
 
         //Destroy(gameObject);
 
     }
-    void SpawnEnemy()
+    void SpawnEnemies()
     {
-        Instantiate(enemies[(int)Random.Range(0, enemies.Length)], spawnPoint.position, spawnPoint.rotation);
+        //Instantiate(enemies[(int)Random.Range(0, enemies.Length)], spawnPoints[].position, spawnPoints[].rotation);
+        /*
+        for(int i = 0; i < spawnPoints.Length; i++)
+        {
+            Instantiate(enemies[(int)Random.Range(0, enemies.Length)], spawnPoints[i].position, spawnPoints[i].rotation);
+        }
+        */
+
+        for(int i = 0; i < round; i++)
+        {
+            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+            Instantiate(enemies[(int)Random.Range(0, enemies.Length)], spawnPoint.position, spawnPoint.rotation);
+            enemiesAlive++;
+        }
     }
 
+    public int GetEnemiesAlive()
+    {
+        return enemiesAlive;
+    }
+    public void SetEnemiesAlive(int enemiesAlive)
+    {
+        this.enemiesAlive = enemiesAlive;
+    }
     /*
     private void OnTriggerExit2D(Collider2D collision)
     {

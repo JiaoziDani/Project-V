@@ -26,6 +26,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
+    public GameObject spawner;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -143,5 +145,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+        int numEnemies = spawner.GetComponent<EnemySpawner>().GetEnemiesAlive();
+        spawner.GetComponent<EnemySpawner>().SetEnemiesAlive(--numEnemies);
     }
 }
