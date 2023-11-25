@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4487243825612374933}
   - component: {fileID: 807956588024946822}
   - component: {fileID: 9105872846454966062}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1489848478806678266}
   - component: {fileID: 1981308247264707432}
   - component: {fileID: 6767344425302638}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy_Melee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
