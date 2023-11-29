@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 108727108}
   - component: {fileID: 108727107}
   m_Layer: 0
-  m_Name: BasicProjectile
+  m_Name: CustomProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
