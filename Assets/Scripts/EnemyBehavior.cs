@@ -26,11 +26,12 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float sightRange, attackRange;
     [SerializeField] private bool playerInSightRange, playerInAttackRange;
 
-    public GameObject spawner;
+    public EnemySpawner spawner;
 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
+        spawner = GameObject.Find("Spawner").GetComponent<EnemySpawner>();
         agent = GetComponent<NavMeshAgent>();
     }
     // Start is called before the first frame update
@@ -144,8 +145,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Die()
     {
+        spawner.DecreaseEnemiesAlive();
         Destroy(gameObject);
-        int numEnemies = spawner.GetComponent<EnemySpawner>().GetEnemiesAlive();
-        spawner.GetComponent<EnemySpawner>().SetEnemiesAlive(--numEnemies);
     }
 }
