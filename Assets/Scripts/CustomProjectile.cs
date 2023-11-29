@@ -31,6 +31,7 @@ public class CustomProjectile : MonoBehaviour
     void Start()
     {
         Setup();
+        Destroy(gameObject, 2);
     }
 
     // Update is called once per frame
