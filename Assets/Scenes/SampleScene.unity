@@ -907,6 +907,10 @@ PrefabInstance:
       propertyPath: enemiesAlive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4851609703682173210, guid: 2f5fb211cb74d2745b5ab0d87618be0d, type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4851609703682173211, guid: 2f5fb211cb74d2745b5ab0d87618be0d, type: 3}
       propertyPath: m_Name
       value: Spawner

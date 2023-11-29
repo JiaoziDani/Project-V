@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomProjectile : MonoBehaviour
+public class EnemyProjectile : MonoBehaviour
 {
     //Assignables
     public Rigidbody rb;
     public GameObject explosion;
-    public LayerMask whatIsEnemies;
+    public LayerMask whatisPlayer;
 
     //Stats
     [Range(0f, 1f)]
@@ -39,14 +38,14 @@ public class CustomProjectile : MonoBehaviour
     void Update()
     {
         //When to explode
-        if(collisions < maxCollisions)
+        if (collisions < maxCollisions)
         {
             Explode();
         }
 
         //Count down lifetime
         maxLifetime -= Time.deltaTime;
-        if(maxLifetime <= 0)
+        if (maxLifetime <= 0)
         {
             Explode();
         }
@@ -55,14 +54,15 @@ public class CustomProjectile : MonoBehaviour
     private void Explode()
     {
         //Instantiate explosion
-        if(explosion != null)
+        if (explosion != null)
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
         }
 
-        //Check for enemies
-        Collider[] enemies = Physics.OverlapSphere(transform.position, explosionRange, whatIsEnemies);
-        for(int i = 0; i < enemies.Length; i++)
+        /* 
+        //Check for Player and do damage
+        Collider[] player = Physics.OverlapSphere(transform.position, explosionRange, whatisPlayer);
+        for (int i = 0; i < enemies.Length; i++)
         {
             //Get component of enemy and call Take Damage
             enemies[i].GetComponent<EnemyBehavior>().TakeDamage(explosionDamage);
@@ -77,6 +77,7 @@ public class CustomProjectile : MonoBehaviour
             //Add delay
             Invoke("Delay", 0.05f);
         }
+        */
     }
 
     private void Delay()
@@ -89,7 +90,7 @@ public class CustomProjectile : MonoBehaviour
         //Increase collisions
         collisions++;
 
-        if (collision.collider.CompareTag("Enemy") && explodeOnTouch)
+        if (collision.collider.CompareTag("Player") && explodeOnTouch)
         {
             Explode();
         }

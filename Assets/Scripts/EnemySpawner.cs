@@ -41,6 +41,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void DecreaseEnemiesAlive()
     {
-        enemiesAlive--;
+        --enemiesAlive;
     }
 }
