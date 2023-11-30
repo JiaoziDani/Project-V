@@ -59,25 +59,17 @@ public class EnemyProjectile : MonoBehaviour
             Instantiate(explosion, transform.position, Quaternion.identity);
         }
 
-        /* 
         //Check for Player and do damage
-        Collider[] player = Physics.OverlapSphere(transform.position, explosionRange, whatisPlayer);
-        for (int i = 0; i < enemies.Length; i++)
+        Collider[] players = Physics.OverlapSphere(transform.position, explosionRange, whatisPlayer);
+        for (int i = 0; i < players.Length; i++)
         {
             //Get component of enemy and call Take Damage
-            enemies[i].GetComponent<EnemyBehavior>().TakeDamage(explosionDamage);
-
-            //Add explosion force (if enemy has a rigidbody)
-            if (enemies[i].GetComponent<Rigidbody>())
-            {
-                enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRange);
-
-            }
+            players[i].GetComponent<PlayerHealth>().TakeDamage(explosionDamage);
 
             //Add delay
             Invoke("Delay", 0.05f);
         }
-        */
+        
     }
 
     private void Delay()
