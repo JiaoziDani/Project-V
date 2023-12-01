@@ -151,8 +151,8 @@ MonoBehaviour:
   alreadyAttacked: 0
   projectile: {fileID: 3767222174886451781, guid: b989590aacc9b1b449b49a82a4d25f48, type: 3}
   canShoot: 1
-  sightRange: 10
-  attackRange: 5
+  sightRange: 15
+  attackRange: 4
   playerInSightRange: 0
   playerInAttackRange: 0
   spawner: {fileID: 0}
