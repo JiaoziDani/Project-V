@@ -520,6 +520,14 @@ PrefabInstance:
       propertyPath: fpsCam
       value: 
       objectReference: {fileID: 553691249}
+    - target: {fileID: 6932071042684912696, guid: 6d05fe0b1392bdb428b2ebdccc360dbf, type: 3}
+      propertyPath: magazineSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6932071042684912696, guid: 6d05fe0b1392bdb428b2ebdccc360dbf, type: 3}
+      propertyPath: timeBetweenShooting
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d05fe0b1392bdb428b2ebdccc360dbf, type: 3}
 --- !u!4 &981434965 stripped
