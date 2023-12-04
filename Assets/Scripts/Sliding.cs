@@ -47,15 +47,33 @@ public class Sliding : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        if (sliding)
+            SlidingMovement();
+
+    }
+
 
     private void StartSlide()
     {
+        sliding = true;
+        playerObj.localScale = new Vector3 (playerObj.localScale.x, slideYScale, playerObj.localScale.z);
+        rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
 
+        slideTimer = maxSlideTime;
     }
 
     private void SlidingMovement()
     {
+        Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
+        rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+
+        slideTimer -= Time.deltaTime;
+
+        if (slideTimer <= 0 )
+            StopSlide();
     }
 
     private void StopSlide()
