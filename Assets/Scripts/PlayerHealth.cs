@@ -19,6 +19,11 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;

@@ -5,18 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    static float Health;
-    static float MaxHealth = 100;
+    //static float Health;
+    static float MaxHealth = 1000;
 
     public Slider HealthBar;
+    public GameObject player;
 
-    private void Start() {
+    private void Start()
+    {
         HealthBar.minValue = 0;
         HealthBar.maxValue = MaxHealth;
-        Health = MaxHealth;
+        //Health = MaxHealth;
     }
 
-    private void Update (){
-        HealthBar.value = Health;
+    private void Update()
+    {
+        HealthBar.value = player.GetComponent<PlayerHealth>().GetHealth();
     }
+
 }
