@@ -21,6 +21,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private bool alreadyAttacked;
     public GameObject projectile;
     [SerializeField] private bool canShoot;
+    [SerializeField] private Transform firePoint;
 
     //States
     [SerializeField] private float sightRange, attackRange;
@@ -114,7 +115,7 @@ public class EnemyBehavior : MonoBehaviour
                 //Shooting code
                 agent.SetDestination(transform.position);
 
-                Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                Rigidbody rb = Instantiate(projectile, firePoint.position, firePoint.rotation).GetComponent<Rigidbody>();
                 rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                 rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             }
