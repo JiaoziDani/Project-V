@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -226,6 +226,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3388917605708978901, guid: 385d25823c991e34b808532f74b7d9c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 16.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388917605708978901, guid: 385d25823c991e34b808532f74b7d9c6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388917605708978901, guid: 385d25823c991e34b808532f74b7d9c6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.1486759
       objectReference: {fileID: 0}
@@ -265,6 +273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4023817661539128197, guid: 385d25823c991e34b808532f74b7d9c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d052f29d423ff2c439da21f150429940, type: 2}
     - target: {fileID: 8829918193874353692, guid: 385d25823c991e34b808532f74b7d9c6, type: 3}
       propertyPath: m_Name
       value: Floor
@@ -988,6 +1000,7 @@ GameObject:
   - component: {fileID: 1265654131}
   - component: {fileID: 1265654132}
   - component: {fileID: 1265654133}
+  - component: {fileID: 1265654134}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1044,6 +1057,9 @@ MonoBehaviour:
   moveSpeed: 7
   walkSpeed: 7
   sprintSpeed: 12
+  slideSpeed: 0
+  desiredMoveSpeed: 0
+  lastDesiredMoveSpeed: 0
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
@@ -1053,7 +1069,7 @@ MonoBehaviour:
   crouchYscale: 0.5
   jumpKey: 32
   sprintKey: 304
-  crouchKey: 306
+  crouchKey: 99
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -1063,6 +1079,7 @@ MonoBehaviour:
   exitingSlope: 0
   orientation: {fileID: 1454151950}
   state: 0
+  sliding: 0
 --- !u!136 &1265654131
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1104,6 +1121,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 150897623}
   player: {fileID: 1265654127}
+--- !u!114 &1265654134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265654127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6aa021b16cabe42853feeb2b457809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1454151950}
+  playerObj: {fileID: 1520746226}
+  maxSlideTime: 0.75
+  slideForce: 200
+  slideYScale: 0.5
+  slideKey: 306
 --- !u!1 &1337394646
 GameObject:
   m_ObjectHideFlags: 0
