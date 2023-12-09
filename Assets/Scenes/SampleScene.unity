@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1157,7 +1157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4413066373636821490, guid: f098f92655ebba14f99832fd39817149, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -119.99061
+      value: -119.899
       objectReference: {fileID: 0}
     - target: {fileID: 4413066373636821490, guid: f098f92655ebba14f99832fd39817149, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2879,6 +2879,8 @@ GameObject:
   - component: {fileID: 1265654131}
   - component: {fileID: 1265654132}
   - component: {fileID: 1265654133}
+  - component: {fileID: 1265654134}
+  - component: {fileID: 1265654135}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2935,16 +2937,20 @@ MonoBehaviour:
   moveSpeed: 7
   walkSpeed: 7
   sprintSpeed: 12
+  slideSpeed: 30
+  wallrunSpeed: 8.5
+  desiredMoveSpeed: 0
+  lastDesiredMoveSpeed: 0
   groundDrag: 5
   jumpForce: 12
   jumpCooldown: 0.25
-  airMultiplier: 0.8
+  airMultiplier: 0.9
   readyToJump: 0
   crouchSpeed: 3.5
   crouchYscale: 0.5
   jumpKey: 32
   sprintKey: 304
-  crouchKey: 306
+  crouchKey: 99
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -2954,6 +2960,8 @@ MonoBehaviour:
   exitingSlope: 0
   orientation: {fileID: 1454151950}
   state: 0
+  sliding: 0
+  wallrunning: 0
 --- !u!136 &1265654131
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2995,6 +3003,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthBar: {fileID: 150897623}
   player: {fileID: 1265654127}
+--- !u!114 &1265654134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265654127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6aa021b16cabe42853feeb2b457809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1454151950}
+  playerObj: {fileID: 1520746226}
+  maxSlideTime: 0.75
+  slideForce: 200
+  slideYScale: 0.5
+  slideKey: 306
+--- !u!114 &1265654135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265654127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a7c8e02f0ae834abc90ba34095944f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 1024
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallRunForce: 200
+  maxWallRunTime: 1.5
+  wallRunTimer: 0
+  wallCheckDistance: 0.7
+  minJumpHeight: 2
+  orientation: {fileID: 1454151950}
 --- !u!1001 &1321372263
 PrefabInstance:
   m_ObjectHideFlags: 0

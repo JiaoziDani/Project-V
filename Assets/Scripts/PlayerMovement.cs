@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float sprintSpeed;
     public float slideSpeed;
+    public float wallrunSpeed;
 
     public float desiredMoveSpeed;
     public float lastDesiredMoveSpeed;
@@ -55,12 +56,14 @@ public class PlayerMovement : MonoBehaviour
     public enum MovementState
     {
         crouching,
+        wallrunning,
         walking,
         sprinting,
         sliding,
         air
     }
     public bool sliding;
+    public bool wallrunning;
 
 
     // Start is called before the first frame update
@@ -103,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //  Handle Jump
-        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope()))
+        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope() || wallrunning))
         {
             readyToJump = false;
             Jump();
@@ -146,9 +149,14 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.crouching;
             desiredMoveSpeed = crouchSpeed;
         }
+        else if (wallrunning)
+        {
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = wallrunSpeed;
+        }
         
         //  Mode = Sprinting
-        if (grounded && Input.GetKey(sprintKey)) {
+        else if (grounded && Input.GetKey(sprintKey)) {
             state = MovementState.sprinting;
             desiredMoveSpeed = sprintSpeed;
         }
