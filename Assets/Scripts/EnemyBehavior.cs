@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UIElements;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    private Animator anim;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
@@ -17,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private float walkPointRange;
 
     //Attacking
+    [SerializeField] private float rotationSpeed = 7f;
     [SerializeField] private float timeBetweenAttacks;
     [SerializeField] private bool alreadyAttacked;
     public GameObject projectile;
@@ -29,6 +33,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public EnemySpawner spawner;
 
+    private enum MovementState {walk, run, shoot}
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -38,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -63,6 +69,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public void Patrolling()
     {
+        anim.SetInteger("state", 0);
+
         if (!walkPointSet)
         {
             SearchWalkPoint();
@@ -98,15 +106,20 @@ public class EnemyBehavior : MonoBehaviour
 
     public void ChasePlayer()
     {
+        anim.SetInteger("state", 1);
         agent.SetDestination(player.position);
     }
 
     public void AttackPlayer()
     {
+        anim.SetInteger("state", 2);
         //Make sure enemy doesnt move
         //agent.SetDestination(transform.position);
 
-        transform.LookAt(player);
+        //transform.LookAt(player, Vector3.up);
+        Vector3 dir = player.position - transform.position;
+        dir.y = 0.0f;
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
 
         if (!alreadyAttacked)
         {
@@ -117,7 +130,7 @@ public class EnemyBehavior : MonoBehaviour
 
                 Rigidbody rb = Instantiate(projectile, firePoint.position, firePoint.rotation).GetComponent<Rigidbody>();
                 rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-                rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+                rb.AddForce(transform.up * -2f, ForceMode.Impulse);
             }
             else
             {
