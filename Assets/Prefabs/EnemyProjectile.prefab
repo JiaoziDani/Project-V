@@ -132,8 +132,8 @@ MonoBehaviour:
   whatisPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  bounciness: 0.8
-  useGravity: 0
+  bounciness: 0.05
+  useGravity: 1
   explosionDamage: 10
   explosionRange: 1
   explosionForce: 0
