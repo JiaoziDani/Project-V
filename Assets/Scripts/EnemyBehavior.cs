@@ -73,7 +73,9 @@ public class EnemyBehavior : MonoBehaviour
         else
         {
             agent.SetDestination(transform.position);
-            transform.LookAt(player);
+            Vector3 dir = player.position - transform.position;
+            dir.y = 0.0f;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
         }
     }
 
