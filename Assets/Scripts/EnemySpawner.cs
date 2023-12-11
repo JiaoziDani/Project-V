@@ -41,6 +41,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public int GetRound() 
+    {
+        return round;
+    }
+
     public void DecreaseEnemiesAlive()
     {
         --enemiesAlive;
