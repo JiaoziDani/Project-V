@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         //  Handle Jump
-        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope() || wallrunning))
+        if (Input.GetKey(jumpKey) && readyToJump && (grounded || OnSlope() || !wallrunning))
         {
             readyToJump = false;
             Jump();
