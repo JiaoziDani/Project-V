@@ -32,14 +32,14 @@ public class CustomProjectile : MonoBehaviour
     void Start()
     {
         Setup();
-        Destroy(gameObject, 2);
+        //Destroy(gameObject, 2);
     }
 
     // Update is called once per frame
     void Update()
     {
         //When to explode
-        if(collisions < maxCollisions)
+        if(collisions > maxCollisions)
         {
             Explode();
         }
@@ -73,10 +73,10 @@ public class CustomProjectile : MonoBehaviour
                 enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRange);
 
             }
-
-            //Add delay
-            Invoke("Delay", 0.05f);
         }
+
+        //Add delay
+        Invoke("Delay", 0.05f);
     }
 
     private void Delay()
