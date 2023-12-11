@@ -31,14 +31,14 @@ public class EnemyProjectile : MonoBehaviour
     void Start()
     {
         Setup();
-        Destroy(gameObject, 2);
+        //Destroy(gameObject, 2);
     }
 
     // Update is called once per frame
     void Update()
     {
         //When to explode
-        if (collisions < maxCollisions)
+        if (collisions > maxCollisions)
         {
             Explode();
         }
@@ -65,11 +65,10 @@ public class EnemyProjectile : MonoBehaviour
         {
             //Get component of enemy and call Take Damage
             players[i].GetComponent<PlayerHealth>().TakeDamage(explosionDamage);
-
-            //Add delay
-            Invoke("Delay", 0.05f);
         }
-        
+
+        //Add delay
+        Invoke("Delay", 0.05f);
     }
 
     private void Delay()

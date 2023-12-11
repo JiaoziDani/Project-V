@@ -8,13 +8,15 @@ public class EnemySpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
     public GameObject[] enemies;
-    public int enemiesAlive = 0;
-    public int round = 0;
+    public int enemiesAlive;
+    public int round;
 
     // Start is called before the first frame update
     void Start()
     {
         coll = GetComponent<BoxCollider>();
+        enemiesAlive = 0;
+        round = 0;
     }
 
     // Update is called once per frame

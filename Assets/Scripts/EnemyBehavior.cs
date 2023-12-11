@@ -13,6 +13,8 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround, whatIsPlayer;
 
     [SerializeField] private float health;
+    private bool isDead = false;
+
 
     //Patrolling
     [SerializeField] private Vector3 walkpoint;
@@ -53,17 +55,25 @@ public class EnemyBehavior : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange)
+        if (isDead == false)
         {
-            Patrolling();
+            if (!playerInSightRange && !playerInAttackRange)
+            {
+                Patrolling();
+            }
+            if (playerInSightRange && !playerInAttackRange)
+            {
+                ChasePlayer();
+            }
+            if (playerInSightRange && playerInAttackRange)
+            {
+                AttackPlayer();
+            }
         }
-        if (playerInSightRange && !playerInAttackRange)
+        else
         {
-            ChasePlayer();
-        }
-        if (playerInSightRange && playerInAttackRange)
-        {
-            AttackPlayer();
+            agent.SetDestination(transform.position);
+            transform.LookAt(player);
         }
     }
 
@@ -113,10 +123,7 @@ public class EnemyBehavior : MonoBehaviour
     public void AttackPlayer()
     {
         anim.SetInteger("state", 2);
-        //Make sure enemy doesnt move
-        //agent.SetDestination(transform.position);
-
-        //transform.LookAt(player, Vector3.up);
+       
         Vector3 dir = player.position - transform.position;
         dir.y = 0.0f;
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dir), rotationSpeed * Time.deltaTime);
@@ -151,9 +158,12 @@ public class EnemyBehavior : MonoBehaviour
     {
         health -= damage;
 
-        if (health < 0)
+        if (health < 0 && isDead == false)
         {
-            Invoke(nameof(Die), .5f);
+            isDead = true;
+            anim.SetBool("Dead", true);
+
+            Invoke(nameof(Die), 2f);
         }
     }
 
