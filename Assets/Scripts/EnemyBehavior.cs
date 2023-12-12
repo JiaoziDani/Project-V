@@ -172,6 +172,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Die()
     {
         spawner.DecreaseEnemiesAlive();
+        spawner.RegisterKill();
         Destroy(gameObject);
     }
 }
