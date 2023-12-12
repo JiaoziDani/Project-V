@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3797,11 +3797,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83a7b7ad6d358d479d0033ad19cff6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 9
   walkSpeed: 7
   sprintSpeed: 12
-  slideSpeed: 30
-  wallrunSpeed: 8.5
+  slideSpeed: 35
+  wallrunSpeed: 12
   desiredMoveSpeed: 0
   lastDesiredMoveSpeed: 0
   groundDrag: 5
@@ -3910,6 +3910,7 @@ MonoBehaviour:
   jumpKey: 32
   wallCheckDistance: 0.7
   minJumpHeight: 2
+  exitWallTime: 0.2
   orientation: {fileID: 1454151950}
 --- !u!114 &1265654136
 MonoBehaviour:
